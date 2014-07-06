@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1298afa6-806d-4007-8da6-fd9399b12b10" name="Default" comment="Added wrapper around requests">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gamello/RequestsWrapper.py" afterPath="$PROJECT_DIR$/src/gamello/RequestsWrapper.py" />
+    <list default="true" id="1298afa6-806d-4007-8da6-fd9399b12b10" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gamello/BoardInitializer.py" afterPath="$PROJECT_DIR$/src/gamello/Board.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gamello.iws" />
@@ -30,21 +30,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BoardInitializer.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gamello/BoardInitializer.py">
+      <file leaf-file-name="Board.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gamello/Board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              <folding />
+            <state vertical-scroll-proportion="0.42420813" vertical-offset="0" max-vertical-offset="884">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding>
+                <element signature="e#22#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestsWrapper.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestsWrapper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gamello/RequestsWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47511312" vertical-offset="0" max-vertical-offset="884">
-              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -120,9 +122,10 @@
         <option value="$PROJECT_DIR$/src/gamello/gamello.test.config" />
         <option value="$PROJECT_DIR$/src/gamello/TrelloApiConstants.py" />
         <option value="$PROJECT_DIR$/src/gamello/AppPermissions.py" />
-        <option value="$PROJECT_DIR$/src/gamello/BoardInitializer.py" />
         <option value="$PROJECT_DIR$/resources/gamello.config" />
         <option value="$PROJECT_DIR$/src/gamello/RequestsWrapper.py" />
+        <option value="$PROJECT_DIR$/src/gamello/BoardInitializer.py" />
+        <option value="$PROJECT_DIR$/src/gamello/Board.py" />
       </list>
     </option>
   </component>
@@ -658,7 +661,7 @@
       <updated>1404643163690</updated>
       <workItem from="1404643169506" duration="5903000" />
       <workItem from="1404652039256" duration="3092000" />
-      <workItem from="1404655539054" duration="3303000" />
+      <workItem from="1404655539054" duration="4500000" />
     </task>
     <task id="LOCAL-00001" summary="Added support for reading appKey and userId from configuration file">
       <created>1404652582658</created>
@@ -668,11 +671,15 @@
       <created>1404658694625</created>
       <updated>1404658694625</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added wrapper around requests + post request">
+      <created>1404658856191</created>
+      <updated>1404658856191</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12298000" />
+    <option name="totallyTimeSpent" value="13495000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="30" width="1924" height="1054" extended-state="6" />
@@ -724,7 +731,8 @@
     </option>
     <MESSAGE value="Added support for reading appKey and userId from configuration file" />
     <MESSAGE value="Added wrapper around requests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added wrapper around requests" />
+    <MESSAGE value="Added wrapper around requests + post request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added wrapper around requests + post request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -732,11 +740,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gamello/BoardInitializer.py">
+    <entry file="file://$PROJECT_DIR$/src/gamello/Board.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
           <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#22#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -780,11 +790,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamello/BoardInitializer.py">
+    <entry file="file://$PROJECT_DIR$/src/gamello/Board.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
           <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#22#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -828,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamello/BoardInitializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/requestTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="886">
@@ -862,10 +866,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gamello/RequestsWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47511312" vertical-offset="0" max-vertical-offset="884">
-          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gamello/Board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42420813" vertical-offset="0" max-vertical-offset="884">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <element signature="e#22#63#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -9,3 +9,11 @@ def lists(boardId):
 
 def cards(listId):
     return "lists/{}/cards".format(listId)
+
+
+def board(boardId):
+    return "boards/{}".format(boardId)
+
+
+def boardMembers(boardId):
+    return "boards/{}/members".format(boardId)

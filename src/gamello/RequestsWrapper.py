@@ -29,6 +29,10 @@ class RequestsWrapper:
         url = self._updateArguments(kwargs, target)
         return requests.post(url, data, **kwargs)
 
+    def postAsPython(self, target, data, **kwargs):
+        response = self.post(target, data, **kwargs)
+        return json.loads(response.text)
+
     def _params(self):
         return {'key': self.permissions.appKey, 'token': self.permissions.token}
 

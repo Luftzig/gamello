@@ -9,7 +9,7 @@ class BoardLogger:
 
     def __init__(self):
         self.dataDict = {}
-        self.filename = 'UpdateLoggerTime.txt'
+        self.timestampFilename = 'UpdateLoggerTime.txt'
 
     ##--------------------------------------------------------------##
     def getAllBoardData(self):
@@ -25,33 +25,38 @@ class BoardLogger:
         finally:
             return boardFullLog
     ##--------------------------------------------------------------##
-    def getBoardlogData(self):
+    def getBoardLog(self):
         boardFullLog = self.getAllBoardData()
         self.dataDict = {}
-        if os.path.exists(self.filename):
-            lastUpdateTime = self.getLastUpdateTime()
-            myGenerator = self.filterByTime(boardFullLog, lastUpdateTime)
-            for entry in myGenerator:
-                self.dataDict[entry[0]]= entry[1]
+        if os.path.exists(self.timestampFilename):
+            self.filterBoardLog(boardFullLog)
         else:
             self.dataDict = boardFullLog
         self.updateLoggerSampleTime(self.dataDict)
         return self.dataDict
+    ##--------------------------------------------------------------##
+    def filterBoardLog(self, boardFullLog):
+        lastUpdateTime = self.getLastUpdateTime()
+        filterByTimeGenerator = self.filterByTime(boardFullLog, lastUpdateTime)
+        for result in filterByTimeGenerator:
+            timeStamp = result[0]
+            dictionaryEntry = result[1]
+            self.dataDict[timeStamp] = dictionaryEntry
     ##--------------------------------------------------------------##
     def filterByTime(self, boardFullLog, timeStamp):
         for k,v in boardFullLog.items():
             if k > timeStamp:
                 yield k, v
     ##--------------------------------------------------------------##
-    def updateLoggerSampleTime(self,boardFullLog):
+    def updateLoggerSampleTime(self, boardFullLog):
         if boardFullLog != {}:
             lastUpdate = sorted(boardFullLog.keys())[-1]
-            f = open(self.filename, 'w')
+            f = open(self.timestampFilename, 'w')
             f.write(lastUpdate)
             f.close()
     ##--------------------------------------------------------------##
     def getLastUpdateTime(self):
-        f = open(self.filename, 'r')
+        f = open(self.timestampFilename, 'r')
         res = f.read()
         return res
     ##--------------------------------------------------------------##
@@ -61,7 +66,7 @@ if __name__ == '__main__':
     response = RequestsWrapper(permissions=permissions).getAsPythonList('boards/53b92a578425b1f0ae215cdd/actions')
 
     borderLoggerObj = BoardLogger()
-    borderLoggerObj.getBoardlogData()
+    borderLoggerObj.getBoardLog()
     for k,v in borderLoggerObj.dataDict.items():
         print k,v
     sys.exit(0)

@@ -8,12 +8,12 @@ __author__ = 'yluft'
 class RequestsWrapper:
 
     def __init__(self, **kwargs):
-        if kwargs['permissions']:
+        if kwargs.has_key('permissions'):
             self.permissions = kwargs['permissions']
-        elif kwargs['filename']:
+        elif kwargs.has_key('filename'):
             self.permissions = AppPermissions(file=kwargs['filename'])
         else:
-            raise KeyError("Missing permissions object or file")
+            self.permissions = _defaultPermissions
 
     def updateArguments(self, kwargs, target):
         kwargs['params'] = dict(kwargs.get('params', {}).items() + self._params().items())
@@ -32,10 +32,14 @@ class RequestsWrapper:
         return {'key': self.permissions.appKey, 'token': self.permissions.token}
 
 
+_defaultPermissions = AppPermissions(file='../../resources/gamello.config')
+
 #Test
 
 if __name__ == '__main__':
     permissions = AppPermissions(file='../../resources/gamello.config')
     response = RequestsWrapper(permissions=permissions).get('members/me')
-    print response.text
-    print response.json()
+    assert response.status_code == 200
+
+    response = RequestsWrapper().get('members/me')
+    assert response.status_code == 200

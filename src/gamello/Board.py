@@ -19,21 +19,43 @@ class Board:
         elif type(appPermissions) is AppPermissions:
             self.requests = RequestsWrapper(permissions=appPermissions)
 
+    def _getGamelloList(self):
+        lists = RequestsWrapper().getAsPythonList(TrelloApiConstants.lists(self.boardId))
+        for list in lists:
+            if list.get('name') == GAMELLO:
+                return list.get('id')
+        else:
+            return None
+
     def _addList(self):
-        arguments = {
-            'name': GAMELLO,
-            'idBoard': self.boardId
-        }
-        response = self.requests.postAsPython("lists/", None, params=arguments)
-        self._gamelloListId = response['id']
+        id = self._getGamelloList()
+        if id is None:
+            arguments = {
+                'name': GAMELLO,
+                'idBoard': self.boardId
+            }
+            response = self.requests.postAsPython("lists/", None, params=arguments)
+            id = response['id']
+        self._gamelloListId = id
+
+    def _getLeaderBoardCard(self):
+        lists = RequestsWrapper().getAsPythonList(TrelloApiConstants.cards(self._gamelloListId))
+        for list in lists:
+            if list.get('name') == LEADER_BOARD:
+                return list.get('id')
+        else:
+            return None
 
     def _addLeaderBoard(self):
-        arguments = {
-            'idList': self._gamelloListId,
-            'name': LEADER_BOARD
-        }
-        result = self.requests.postAsPython("cards/", None, params=arguments)
-        self._leaderBoardCardId = result['id']
+        id = self._getLeaderBoardCard()
+        if id is None:
+            arguments = {
+                'idList': self._gamelloListId,
+                'name': LEADER_BOARD
+            }
+            response = self.requests.postAsPython("cards/", None, params=arguments)
+            id = response['id']
+        self._leaderBoardCardId = id
 
     def _updateRules(self, rules):
         pass

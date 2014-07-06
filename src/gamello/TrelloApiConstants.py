@@ -17,3 +17,7 @@ def board(boardId):
 
 def boardMembers(boardId):
     return "boards/{}/members".format(boardId)
+
+
+def cardDesc(cardId):
+    return "cards/{}/desc".format(cardId)

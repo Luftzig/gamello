@@ -40,6 +40,16 @@ class RequestsWrapper:
         responseObj = self.get(target, **kwargs)
         return json.loads(responseObj.text)
 
+    def put(self, target, data, **kwargs):
+        url = self._updateArguments(kwargs, target)
+        return requests.put(url, data, **kwargs)
+
+    def putAsPythonObject(self, target, data, **kwargs):
+        responseObj = self.put(target, data, **kwargs)
+        return json.loads(responseObj.text)
+
+
+
 _defaultPermissions = AppPermissions(file='../../resources/gamello.config')
 
 #Test

@@ -18,10 +18,15 @@ def _getFromBoard(boardId):
             return _getRulesCard(list.get('id'))
 
 
+def mergeDeltasIntoFrom(pointsDeltas, ruleDeltas):
+    for key in pointsDeltas:
+        pointsDeltas[key] += ruleDeltas.get(key, 0)
+    for key in ruleDeltas:
+        if not pointsDeltas.has_key(key):
+            pointsDeltas[key] = ruleDeltas[key]
 
 
 class Rules:
-
     def __init__(self):
         self.rules = []
 
@@ -34,10 +39,54 @@ class Rules:
     def _parseRules(self, lines):
         pass
 
+    def apply(self, log):
+        pointsDeltas = {}
+        for rule in self.rules:
+            ruleDeltas = rule.apply(log)
+            mergeDeltasIntoFrom(pointsDeltas, ruleDeltas)
+        return pointsDeltas
+
+
+# Tests
 
 def testGetFromBoard():
     _getFromBoard('53b92a578425b1f0ae215cdd')
 
 
+def testDeltaMerging():
+    print("testDeltaMerging")
+    originalDelta = {
+        'yoav': -5,
+        'roy': 3
+    }
+    ruleDelta = {
+        'yoav': 3,
+        'daniel': 5
+    }
+    mergeDeltasIntoFrom(originalDelta, ruleDelta)
+    assert originalDelta['yoav'] == -2
+    assert originalDelta['roy'] == 3
+    assert originalDelta['daniel'] == 5
+    print("testDeltaMerging: passed")
+
+
+def testRulesApply():
+    print('testRulesApply')
+    rules = Rules()
+
+    class Rule:
+        pass
+
+    rule = Rule()
+    rule.apply = lambda log: {'yoav': 5}
+    rules.rules.append(rule)
+    delta = rules.apply(None)
+    assert delta['yoav'] == 5
+    print('testRulesApply: passed')
+
+
 if __name__ == '__main__':
     testGetFromBoard()
+
+    testDeltaMerging()
+    testRulesApply()

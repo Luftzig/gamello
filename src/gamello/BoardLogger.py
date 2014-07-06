@@ -7,7 +7,7 @@ from AppPermissions import AppPermissions
 class BoardLogger:
 
     def __init__(self):
-        self.dataDict = {}
+        self.boardLogger = {}
         self.timestampFilename = 'UpdateLoggerTime.txt'
 
     ##--------------------------------------------------------------##
@@ -26,13 +26,13 @@ class BoardLogger:
     ##--------------------------------------------------------------##
     def getBoardLog(self):
         boardFullLog = self.getAllBoardData()
-        self.dataDict = {}
+        self.boardLogger = {}
         if os.path.exists(self.timestampFilename):
             self.filterBoardLog(boardFullLog)
         else:
-            self.dataDict = boardFullLog
-        self.updateLoggerSampleTime(self.dataDict)
-        return self.dataDict
+            self.boardLogger = boardFullLog
+        self.updateLoggerSampleTime(self.boardLogger)
+        return self.boardLogger
     ##--------------------------------------------------------------##
     def filterBoardLog(self, boardFullLog):
         lastUpdateTime = self.getLastUpdateTime()
@@ -40,7 +40,7 @@ class BoardLogger:
         for result in filterByTimeGenerator:
             timeStamp = result[0]
             dictionaryEntry = result[1]
-            self.dataDict[timeStamp] = dictionaryEntry
+            self.boardLogger[timeStamp] = dictionaryEntry
     ##--------------------------------------------------------------##
     def filterByTime(self, boardFullLog, timeStamp):
         for k,v in boardFullLog.items():
@@ -66,6 +66,6 @@ if __name__ == '__main__':
 
     borderLoggerObj = BoardLogger()
     borderLoggerObj.getBoardLog()
-    for k,v in borderLoggerObj.dataDict.items():
+    for k,v in borderLoggerObj.boardLogger.items():
         print k,v
     sys.exit(0)

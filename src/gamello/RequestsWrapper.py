@@ -41,6 +41,7 @@ _defaultPermissions = AppPermissions(file='../../resources/gamello.config')
 #Test
 
 def getAsPythonListTest():
+    permissions = AppPermissions(file='../../resources/gamello.config')
     response = RequestsWrapper(permissions=permissions).getAsPythonList('boards/53b92a578425b1f0ae215cdd/actions')
     print response
 

@@ -15,10 +15,18 @@ class RequestsWrapper:
         else:
             raise KeyError("Missing permissions object or file")
 
-    def get(self, target, **kwargs):
+    def updateArguments(self, kwargs, target):
         kwargs['params'] = dict(kwargs.get('params', {}).items() + self._params().items())
         url = TrelloApiConstants.TRELLO_API_BASE + target
+        return url
+
+    def get(self, target, **kwargs):
+        url = self.updateArguments(kwargs, target)
         return requests.get(url, **kwargs)
+
+    def post(self, target, data, **kwargs):
+        url = self.updateArguments(kwargs, target)
+        return requests.post(url, data, **kwargs)
 
     def _params(self):
         return {'key': self.permissions.appKey, 'token': self.permissions.token}

@@ -16,6 +16,7 @@ class AppPermissions:
         configParser.read(fileName)
         self.appKey = configParser.get('Permissions', 'appKey')
         self.userId = configParser.get('Permissions', 'userId')
+        self.token = configParser.get('Permissions', 'userToken')
 
 
 # Test

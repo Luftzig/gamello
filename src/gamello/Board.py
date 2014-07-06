@@ -1,5 +1,8 @@
 __author__ = 'yluft'
 
+GAMELLO = 'Gamello'
+LEADER_BOARD = 'LeaderBoard'
+
 from AppPermissions import AppPermissions
 from RequestsWrapper import RequestsWrapper
 
@@ -15,7 +18,7 @@ class Board:
 
     def _addList(self):
         arguments = {
-            'name': 'Gamello',
+            'name': GAMELLO,
             'idBoard': self.boardId
         }
         self.requests.post("lists/", None, params=arguments)
@@ -23,7 +26,14 @@ class Board:
     def _addLeaderBoard(self, idList):
         arguments = {
             'idList': idList,
-            'name': 'LeaderBoard'
+            'name': LEADER_BOARD
+        }
+        self.requests.post("cards/", None, params=arguments)
+
+    def _addLeaderBoard(self, idList):
+        arguments = {
+            'idList': idList,
+            'name': LEADER_BOARD
         }
         self.requests.post("cards/", None, params=arguments)
 

@@ -16,17 +16,17 @@ class RequestsWrapper:
         else:
             self.permissions = _defaultPermissions
 
-    def updateArguments(self, kwargs, target):
+    def _updateArguments(self, kwargs, target):
         kwargs['params'] = dict(kwargs.get('params', {}).items() + self._params().items())
         url = TrelloApiConstants.TRELLO_API_BASE + target
         return url
 
     def get(self, target, **kwargs):
-        url = self.updateArguments(kwargs, target)
+        url = self._updateArguments(kwargs, target)
         return requests.get(url, **kwargs)
 
     def post(self, target, data, **kwargs):
-        url = self.updateArguments(kwargs, target)
+        url = self._updateArguments(kwargs, target)
         return requests.post(url, data, **kwargs)
 
     def _params(self):

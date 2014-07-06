@@ -14,18 +14,29 @@ class Board:
             self.requests = RequestsWrapper(permissions=appPermissions)
 
     def _addList(self):
-        pass
+        arguments = {
+            'name': 'Gamello',
+            'idBoard': self.boardId
+        }
+        self.requests.post("lists/", None, params=arguments)
 
-    def _addLeaderBoard(self):
-        pass
+    def _addLeaderBoard(self, idList):
+        arguments = {
+            'idList': idList,
+            'name': 'LeaderBoard'
+        }
+        self.requests.post("cards/", None, params=arguments)
 
     def _updateRules(self):
         pass
 
     def initializeBoard(self):
         board = self.requests.get("boards/" + self.boardId)
-
+        print board
+        self._addList()
+        self._addLeaderBoard()
 
 if __name__ == '__main__':
-    pass
+    board = Board('53b92a578425b1f0ae215cdd')
+    board.initializeBoard()
 

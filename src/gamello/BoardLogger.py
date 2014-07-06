@@ -20,7 +20,7 @@ class BoardLogger:
             for entry in response:
                 boardFullLog[entry["date"]] = entry
         except Exception as error:
-            prettyPrint("Exception received with error %s" % error)
+            print "Exception received with error %s" % error
         finally:
             return boardFullLog
     ##--------------------------------------------------------------##

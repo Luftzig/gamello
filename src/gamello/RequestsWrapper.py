@@ -1,3 +1,4 @@
+import json
 import requests
 from AppPermissions import AppPermissions
 import TrelloApiConstants
@@ -31,6 +32,9 @@ class RequestsWrapper:
     def _params(self):
         return {'key': self.permissions.appKey, 'token': self.permissions.token}
 
+    def getAsPythonList(self, target, **kwargs):
+        responseObj = self.get(target, **kwargs)
+        return json.loads(responseObj.text)
 
 #Test
 

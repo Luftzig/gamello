@@ -1,7 +1,6 @@
 
 import os
 import sys
-from PublicTools import prettyPrint
 from RequestsWrapper import RequestsWrapper
 from AppPermissions import AppPermissions
 

@@ -4,7 +4,7 @@ __author__ = 'yluft'
 
 setup(
     name='gamello',
-    version='0.0.1.dev',
+    version='0.0.1',
     description='Gamello is a gamefication engine for Trello boards',
     author='Roy Grossman, Daniel Jacobson, Yoav Luft',
     author_email='yoav.luft_at_gmail_dot_com',

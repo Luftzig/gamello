@@ -1,6 +1,7 @@
 
 import sys
 import requests
+import unittest
 
 
 ############################################################
@@ -39,6 +40,12 @@ def getNameRequest():
                 'token': TOKKEN_API,
               }
     genericRequest(url,payload)
+
+
+class RequestTest(unittest.TestCase):
+
+    def test(self):
+        getNameRequest()
 
 
 ##---------------------------------------##
